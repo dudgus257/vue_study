@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <style>
+        #main{font-size:20px;font-weight:bold}
+        #App{font-size:30px;font-weight:bold}
+    </style>
+</head>
+<body>
+    <div id="main">
+        <!-- sTitle 값을 받아서 HTML의 엘리먼트 값으로 변환하여 표시함 -->
+        <p>{{ sTitle }}</p>
+        <p>{{ sContent }}</p>            
+    </div>
+    <div id="App">
+        <p>{{ sTitle2 }}</p>
+        <p>{{ sContent2 }}</p>
+    </div>
+    <script>        
+        new Vue({
+            el: '#main', 
+            data: {                
+                sTitle : 'hungry',
+                sContent : 'hungry2'                
+            }
+        });
+        new Vue({
+            el: '#App', 
+            data: {                
+                sTitle2 : 'hungry3',
+                sContent2 : 'hungry4'
+            }
+        });                                                                
+    </script>
+</body>
+</html>

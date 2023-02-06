@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Roboto:wght@100;300;400;500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.1.96/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@2.6.13/dist/vuetify.min.css">
+    <style>
+        /* 테두리를 볼 수 있도록 그리드 스타일 설정 */
+        .border_style{
+            border:1px solid royalblue;
+            background : tan
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <v-app>
+        <v-main>
+            <v-container>                
+                <v-row class="text-center">
+                    <v-col cols="12" sm="4" class="border_style">BOX 1</v-col>
+                    <v-col cols="12" sm="4" class="border_style">BOX 1</v-col>
+                    <v-col cols="12" sm="4" class="border_style">BOX 1</v-col>
+                </v-row>
+            </v-container>
+            <v-container>
+                <v-row class="text-center">
+                    <v-col cols="4" md="12" xs="4" class="border_style">BOX 1</v-col>
+                    <v-col cols="4" md="12" xs="4" class="border_style">BOX 1</v-col>
+                    <v-col cols="4" md="12" xs="4" class="border_style">BOX 1</v-col>
+                </v-row>
+            </v-container>
+        </v-main>
+    </v-app>
+</div>    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script>
+        new Vue({
+          el: '#app',
+          vuetify: new Vuetify()
+        })
+      </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리스트와 아이콘</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.0.96/css/materialdesignicons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css">
+    <style>
+        body{
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+  <div id="app">
+    <v-app>
+      <v-app-bar app color="blue" dark>
+        <!-- 좌측에 메뉴 아이콘 추가 -->
+        <v-app-bar-nav-icon></v-app-bar-nav-icon>
+        <v-toolbar-title>VueJS List</v-toolbar-title>
+      </v-app-bar>
+      <v-main>
+        <v-container>
+          <v-card>
+            <!-- 내용 영역에 높이 300px 카드 스타일 넣음 -->
+            <v-card-text style="height:400px;" class="grey lighten-4"></v-card-text>
+            <!-- 하단 기준으로 50px 높이에 [추가] 플로팅 단추 넣음 -->
+            <v-card-text style="height:50px; position:relative"></v-card-text>
+          </v-card>
+          <v-btn fixed bottom right dark fab color="pink">
+            <v-icon>add</v-icon>
+          </v-btn>
+        </v-container>
+      </v-main>
+
+      <v-footer>Copyright &copy; VueJS</v-footer>
+    </v-app>
+  </div>
+
+  <script src="http://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="http://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            vuetify: new Vuetify(),
+            
+        });
+    </script>
+</body>
+</html>

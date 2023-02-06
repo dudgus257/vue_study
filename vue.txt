@@ -1,0 +1,353 @@
+뷰의 기본 사용법가 특징 학습
+ - CDN으로 설정하는 방법 (http://code.jquery.com/jquery.js)
+ - 머스태시라고 불리는 {{}} 활용법
+ - data 속성의 바인딩 관계를 이해
+
+new Vue(); -> vue 선언문
+
+뷰 앱 구동 방법
+ - HTML의 body 엘리먼트 중에서 뷰 화면이 표시될 영역을 el(element) 속성에 선택자로 지정
+ - el: '#main' 은 el  속성에 #main으로 div 엘리먼트 부분을 연결한다는 의미
+    
+el:'#main'
+
+data 속성
+ - data 속성은 뷰 안에서 사용할 데이터를 변수명으로 선언하여 관리하는곳
+ - 객체나 함수를 선언하여 데이터를 읽고 저장하는 일 수행
+
+data: {
+    {{ sTitle }}로 데이터 값을 전달함
+    sTitle: 'Hello, World!'
+}
+
+03. 단방향 바인딩과 v-bind 디렉티브
+데이터 바인딩
+ - HTML의 어트리뷰트(attribute) 값을 수정할 때 v-bind라는 디렉티브를 이용해서 데이터 값을 브라우저 화면에 자동으로 반영하는 것을 의미
+ - 변수값을 HTML 어트리뷰트에 연결함으로써 변수가 새로운 값으로 바뀔때마다 HTML 엘리먼트에 실시간으로 렌더링
+ 
+v-bind 디렉티브
+ - 콜론(:)을 중심으로 왼쪽에는 v-bind를 기입하고, 오른쪽에는 HTML 엘리먼트의 어트리뷰트를 선언해서 바인딩으로 만들어진 값을 대입하는 식
+ - 콜론(:)만 사용하면 'v-bind'라는 명칭은 생략
+<input v-bind:value="sDate"> //HTML 어트리뷰트 값 생성
+v-bind:src="" / v-bind:alt=""
+<a v-bind:href="sDate">{{NAME}} </a>
+
+obj.setAttribute("src", "1.jpg") = 쇼핑몰 사진 확대
+
+단방향 바인딩과 v-bind 디렉티브
+ - 머스태시 : HTML의 엘리먼트 값 생성
+    => <p>{{sTitle}}</p>  // HTML 엘리먼트 값 생성
+ - v-bind : HTML 요소의 어트리뷰트 값 생성
+    => <input v-bind:value="sDate"> // HTML 어트리뷰트 값 생성
+
+date 개념
+            Year()
+            Month()
+get or set  Date()
+            Day()
+            Hours()
+            Minutes()
+            Seconds()
+바꾸려면 set
+가져오려면 get
+
+양방향 바인딩과 v-model 디렉티브
+양방향 데이터 바인딩
+ - 입력과 동시에 데이터가 동기화되어 표시되는 기능을 수행
+
+v-model 디렉티브
+ - HTML 어트리뷰트에 양방향 데이터 바인딩을 수행
+ - 콜론(:)을 중심으로 왼쪽에는 v-model을 기입하고 오른쪽에는 HTML 엘리먼트의 어트리뷰트 이름을 작성
+
+조건 판단과 v-if, v-else 디렉티브
+v-if 디렉티브
+ - 조건이 충족될 때만 렌더링을 수행하도록 돕는 어트리뷰트
+v-if, else로 직접 bFlag 데이터에 접근하여 조건 판단
+<p v-if="bFlag == true">앞면!</p>
+<p v-else>뒷면!</p>
+
+Data 선언 설정
+ - random() 함수는 0~1 사이이ㅡ 임의의 값을 생성
+ data: {
+                //랜덤값(0~1)을 발생시켜 0.5보다 크면 ture, 아니면 false 값을 가짐
+                bFlag: Math.random() > 0.5
+            }
+        });
+
+반복문과 v-for 디렉티브
+v-for 디렉티브
+ - HTML 안에서 반복문으로 배열값을 읽어서 목록의 항목과 인덱스 변수에 저장하도록 돕는 어트리뷰트
+// v-for 반복문으로 fruits 과일 배열 데이터를 가져옴
+<li v-for="item infruits">
+// fruits 안의 fruitsName 항목을 하나씩 가져와 html로 렌더링
+{{ item.fruitName }}
+</li>
+
+v-for 디렉티브 적용
+ - v-for 디렉티브는 데이터의 값을 하나씩 차례로 읽어내어 원하는 항목만 선택하여 표시할 때 많이 사용
+
+data 선언
+ - fruits는 배열 형태로 과일 이름을 정의하기 위해 data 속성을 선언할 때 대괄호를 이용
+
+-----------------------221219----------------------------
+
+컴포넌트 (component)란?
+ - 뷰의 중요한 특징 중 하나이며 HTML의 기본 엘리먼트 외에 자신만의 엘리먼트를 만들어 쓰는 모듈을 의미
+ - 미리 만든 컴포넌트 이름을 가지고 여는 태그(<>)와 닫는 태그(</>)에 적용해 사용
+ 
+템플릿(template)란?
+ - 새로운 엘리먼트처럼 사용할 수 있도록 컴포넌트를 등록할 때 HTML과 뷰 코드로 작성된 소스를 의미
+
+템플릿 속성
+ - 컴포넌트 안에서 화면에 표시될 부분을 처리하는 속성
+ - HTML, CSS, 자바스크립트를 적용하여 표시될 내용의 구조와 표현, 사용자와의 상호작용 기능을 구현
+ - 백틱(`)키를 사용하여 문자열을 선언하면 줄바꿈이 있어도 HTML 문서로 자동으로 인식
+
+*컴포넌트 속성 props*
+컴포넌트 속성(props)
+ - 컴포넌트에서 전달되는 어트리뷰트의 값으로써, 문자열이나 객체의 배열 형식을 사용
+
+뷰의 컴포넌트 장점
+ - HTML의 일반 엘리먼트처럼 사용할 수 있기 떄문에 기능을 무한대로 확장할 수 있는 잠재력
+ - 다양한 주제별로 그에 맞는 엘리먼트를 설계하여 사용
+ - 컴팩트한 개발이 가능하므로 유지보수 관점에서도 편리
+
+mutations와 getters 속성 설정
+mutations 속성
+ - 외부에서 Buex에 접근할 때 데이터 변경을 대신 수행해 줄 에이전트
+
+getters 속성
+ - Vuex안의 데이터에 접근하여 그값을 외부로 반환해 주는것
+ - 비동기 실행이 필요한 함수는 특별히 async를 함수 이름앞에 선언해서 관리
+
+actions 속성 설정
+actions속성
+ - 비동기 실행을 위해 준비
+
+API의 fnDecrement() 함수
+ - 외부 API의 함수를 실행하는 것을 흉내 내기 위해서 API 모듈을 별도로 제작
+
+내비게이션과 라우터
+
+라우터란?
+ - 페이지 간 이동을 위한 라이브러리
+ - 경로와 컴포넌트를 등록하면 싱글 페이지 앱에서 사용자가 클릭한 경로로 화면이 이동하도록 도와줌
+
+주요 기능
+ - 중첩된 route/view mapping
+ - 모듈화된, 컴포넌트 기반의 라우터 설정
+ - 라우터 파라미터, 쿼리, 와일드카드
+ - Vue.js의 transition system을 이용한 트랜지션 효과
+ - 세밀한(Fine-grained) 내비게이션 컨트롤
+ - active CSS 클래스를 자동으로 추가해주는 링크
+ - HTML5 History 모드 또는 Hash 모드
+    - auto-fallback in IE9
+    - vue router에서 default는 Hash 모드
+ - 사용자 정의 가능한 스크롤 동작
+
+라우터 사용
+router-view 엘리먼트
+ - url에 따른 컴포넌트가 화면에 그려지는 영역
+<router-view></router-view>
+
+router-link 엘리먼트
+ - 라우터의 뷰 페이지 변경
+ - 컴파일 시, <a> 태그로 변환
+<router-link to="/main">메인 페이지 이동</router-link>
+<router-link to="/sub">서브 페이지 이동</router-link>
+
+to 어트리뷰트
+ - to 속성 값의 경로(라우터 페이지)로 이동
+ - v-bind와 함께 사용하여 동적으로 경로 생성
+ - to="test/path" 처럼 붙이면 현재 url에 path 추가
+ - to="/test/detail" 처럼 붙이면 default url에 붙음(대표적)
+<router-link to="/main">메인 페이지 이동</router-link>
+<router-link to="/sub">서브 페이지 이동</router-link>
+styling
+ - router-link-exact-active등 class를 통해 스타일 적용
+
+ - 2022-12-21 -
+
+뷰티파이, 뷰 최고의 UI 프레임 워크
+뷰티파이(Vuetify.js)란 무엇인가?
+ - 뷰 자바스크립트 프레임워크에 머티리얼 디자인을 사용할 수 있는 컴포넌트 프레임워크
+ - 구글의 머티리얼 디자인 스펙 2를 충실하게 표현
+ - 현대 웹앱에 필요한 컴포넌트를 편리하게 사용
+https://vuetifyjs.com/en/
+http://vma.isocked.com/#/dashboard
+
+뷰티파이가 주목받는 4가지 특징
+ - 구글 머티리얼 스펙의 충실한 지원
+ - 80개 이상의 시맨틱 머티리얼 디자인 컴포넌트
+ - 빠른속도
+ - 쉬운 학습 곡선
+
+기본 레이아웃 만들기1
+삼단 레이아웃 실습
+ - 모바일 UI의 가장 기본이 되는 툴바, 본문, 바닥글의 삼단 레이아웃을 구성
+핵심내용
+ - 툴바 영역: v-toolbar 엘리먼트 사용
+ - 본문 영역: v-content 엘리먼트 사용
+ - 여백 자동 설정: v-container 엘리먼트 사용
+ - 바닥글 영역: v-footer 엘리먼트 사용
+
+링크 연결
+구글 웹폰트 검색
+ - https://fonts.google.com/
+ - 폰트 & 옵션 선택
+ - 폰트 옵션 선택 후 생성된 css 뒤에 "|Material+Icons" 추가
+
+구글 머티리얼 아이콘 선택
+ - https://fonts.google.com/
+ - 상단 메뉴 icons 클릭
+ - Material symbols > Material
+ - 사용할 아이콘 선택
+
+링크 연결2
+ - https://www.jsdelivr.com/
+ - @mdi/font 검색
+ - @mdi/font 항목 클릭
+ - /npm/@mdi/font@7.0.96/css 클릭
+ - /npm/@mdi/font@7.0.96/css/materialdesignicons.css 항목
+ - copy to clipboard 클릭 -> copy URL
+
+기본 레이아웃 만들기2
+구성요소 추가 및 스타일 적용
+ - 툴바에 버튼 아이콘을 추가
+ - 콘텐츠 영역에 타이포그래피 추가 및 스타일 적용
+
+앱바 스타일
+v-appbar 엘리먼트
+ - 앱바를 넣고 싶을 때 사용
+
+dark 어트리뷰트 지정
+ - 글자 색을 흰색으로 바꾸고 테마와 글자의 명도를 자동으로 조정하여 가독성 향상
+
+fixed 어트리뷰트 지정
+ - 스크롤에 영향 받지 않고 툴바의 위치를 고정
+앱바색상을 primary(파란색)로 설정하고 fixed로 위치 고정
+<v-app-bar app color="primary" dark fixed
+
+색상은 color 어트리뷰트에 지정
+ - 총 7가지 기본 테마(theme) 색상
+ - https://m2.material.io(구글 머티리얼 디자인)
+
+앱바 메뉴 아이콘
+아이콘 버튼, 제목 등을 추가
+ - 메뉴 아이콘 버튼의 v-app-bar-nav-icon 엘리먼트를 사용
+ - 제목은 v-toolbar-title 엘리먼트를 사용해 값에 제목명 기입
+<v-app-bar-nav-icon></v-app-bar-nav-icon>
+<v-toolbar-title>마스터 페이지</v-toolbar-title>
+
+앱바 정렬 및 아이콘 추가
+아이콘과 텍스트 오른쪽 정렬
+ - v-spacer 엘리먼트를 추가하여 구분
+ - v-spacer 엘리먼트 사용 전에는 왼쪽 정렬로 나타남
+
+아이콘 변경
+ - https://fonts.google.com/ - icons - Material icons에서 사용할 아이콘 선택
+ - <span class="아이콘 클래스명"> 사용할 아이콘 이름</span>
+ - https://materialdesignicons.com/ - 사용할 아이콘에 마우스 오버
+ - <v-icon>mdi-아이콘이름</v-icon>
+ <v-spacer></v-spacer>
+                <v-btn icon>
+                    <v-icon>mdi-dots-vertical</v-icon>                    
+                </v-btn>
+본문 영역과 자동 여백
+v-main
+ - 본문의 영역을 정함
+ - 사용 가능한 모든 영역을 본문 영역 지정
+v-container
+ - v-container 안에 있는 모든 엘리먼트에게 화면 크기에 맞는 적절한 여백을 자동으로 부여
+ - v-main을 먼저 사용하고 그 다음에 v-container를 레이아웃에 맞춰서 사용
+
+카드 UI
+카드 UI는 실전에서 상당히 많이 사용되는 UI 컴포넌트
+ - v-card 엘리먼트로 카드 UI를 쉽게 구현
+ - v-img와 v-card-title 엘리먼트로 이미지와 제목 작성
+
+ https://www.jsdelivr.com/?query=%40mdifont
+
+카드 안에 이미지 넣기
+카드 영역 안에 이미지
+ - v-img 엘리먼트 사용
+ - src 어트리뷰를 사용하여 이미지 경로를 지정
+ - aspect-ratio 어트리뷰트로 이미지의 가로, 세로 비율 지정
+
+카드에 텍스트 넣기
+카드 안에 제목과 본문을 넣는 방법
+ - v-card-text 엘리먼트를 사용
+
+v-card-text로 글자로 디자인하고 싶은 영역을 지정
+ - 타이포그래피의 크기 : title로 설정
+ - 제목의 여백 : mb-2으로 bottom 여백을 2(8px)로 설정
+
+버튼 스타일 테마 넣기
+글자색
+ - 색상 제목 옆에 '--text'라는 접미사를 추가
+outlined 어트리뷰트
+ - 입체감 있는 일반 디자인 스타일에서 플랫 디자인 스타일 변경 (색상표 = 뷰티파이 site)
+
+그리드 기본 원리
+그리드는 화면 레이아웃 작업에서 가장 핵심
+ - 반응형 웹 디자인을 하려면 그리드 사용법은 필수
+ - v-row, v-col 엘리먼트를 통해 그리드 기능을 충실히 제공
+
+반응형 그리드
+반응형 웹 디자인을 그리드로 제작
+ - 데스크톱 PC와 모바일 웹 디자인을 반응형으로 제작
+
+https://vuetifyjs.com/en/getting-started/installation/#usage-with-cdn 
+ = vue 코드
+
+앱바 메뉴 아이콘
+v-app-bar 엘리먼트
+ - v-app-bar-nav-icon으로 메뉴 아이콘을, v-toolbar-title로 제목을 표기
+
+목록과 항목
+목록만들기
+ - 목록은 v-list 엘리먼트, 세부 항목은 v-list-item 엘리먼트를 사용
+ - v-list 엘리먼트로 목록의 영역을 지정
+
+two-line 어트리뷰트 
+ - 한 항목에 두 줄이 들어가도록 지정
+ - 세줄은 three-line 어트리뷰트 적용
+
+v-for="item in aList"의 디렉티브
+ - aList 배열 변수에 있는 항목을 for 루프를 돌면서 하나씩 값을 꺼내어 item 변수에 저장
+ - v-bind:key="item.id"은 v-bind 디렉티브의 key에 item의 id값을 저장하여 성능향상의 기능을 수행
+
+@click
+ - @은 v-on 디렉티브를 축약한 표현
+ - click 이벤트와 바인딩시킨다는 의미
+
+v-list-item-avatar 엘리먼트
+ - 하나의 목록 안에 아이콘을 넣기
+ - 목록 항목에 가장 적합한 원 모양의 디자인으로 바꿔서 표현
+
+v-icon 엘리먼트
+ - 표현하고자 하는 아이콘 모양을 지정
+
+:class
+ - v-bind 디렉티브를 간단히 써서 item 변수에 있는 icon_style 명을 클래스 선택자로 적용
+ - 표현할 아이콘의 색상 스타일이 변경
+
+머스타쉬 적용
+ - {{ item.icon_name }}으로 표현하면 아이콘 이미지가 동적으로 바인딩
+
+목록과 그룹핑
+v-list-item-content 엘리먼트를 사용
+ - 아이콘 영역을 제외한 나머지 부분을 모두 확보해서 표현
+
+v-list-item-title 엘리먼트를 사용
+ - 확보된 영역 안에서 제목을 표시
+
+이벤트 UI요소 그룹핑
+v-list-item-action 엘리먼트
+ - 자동으로 목록에서 가장 적합한 레이아웃으로 이벤트용 버튼을 배치
+
+버튼 스타일
+오른쪽 화살표 버튼
+ - v-btn과 v-icon으로 작성
+ - keyboard_arrow_right는 오른쪽 화살표 모양을 의미
+ - 색상은 회색으로 표현
